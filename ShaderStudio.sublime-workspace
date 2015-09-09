@@ -1,0 +1,723 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"loo",
+				"loopVal1"
+			],
+			[
+				"pointer",
+				"pointer-events"
+			],
+			[
+				"backgr",
+				"background-repeat"
+			],
+			[
+				"userS",
+				"userSetMetaImageFile"
+			],
+			[
+				"image",
+				"imageFaceWrapper"
+			],
+			[
+				"disp",
+				"displayHeight"
+			],
+			[
+				"dis",
+				"displayWidth"
+			],
+			[
+				"encod",
+				"encodedData1"
+			],
+			[
+				"custom",
+				"customPhoto_dataURI"
+			],
+			[
+				"userSet",
+				"userSetMetaImageURL"
+			],
+			[
+				"fileS",
+				"filesSelected"
+			],
+			[
+				"rem",
+				"removeAttr  (function)"
+			],
+			[
+				"originalSca",
+				"originalScalingX"
+			],
+			[
+				"origin",
+				"originalScalingX  (variable)"
+			],
+			[
+				"orig",
+				"originalLeft"
+			],
+			[
+				"origi",
+				"originalLeft"
+			],
+			[
+				"platfo",
+				"platformList"
+			],
+			[
+				"chec",
+				"checkBrowserVersion"
+			],
+			[
+				"add",
+				"addClass  (function)"
+			],
+			[
+				"curre",
+				"currentGames"
+			],
+			[
+				"currentS",
+				"currentSortTheme"
+			],
+			[
+				"new",
+				"newHeight"
+			],
+			[
+				"platform",
+				"platformWrapper2"
+			],
+			[
+				"platfor",
+				"platformDescription"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"li",
+				"link	Tag"
+			],
+			[
+				"cached",
+				"cachedTimer"
+			],
+			[
+				"projecm",
+				"ProjectMiddle"
+			],
+			[
+				"height",
+				"height"
+			],
+			[
+				"platformListA",
+				"platformListAnimations"
+			],
+			[
+				"projec",
+				"projectScreenshots"
+			],
+			[
+				"platformList",
+				"platformListVideo"
+			],
+			[
+				"projecta",
+				"projectAnimation"
+			],
+			[
+				"projectApp",
+				"projectApps"
+			],
+			[
+				"Platform",
+				"PlatformCircle2"
+			],
+			[
+				"projectWe",
+				"projectWebCC"
+			],
+			[
+				"projectWeb",
+				"projectWebNative"
+			],
+			[
+				"scri",
+				"scripts"
+			],
+			[
+				"cont",
+				"continueCylce"
+			],
+			[
+				"active",
+				"activePlatform"
+			],
+			[
+				"index",
+				"indexDescription"
+			],
+			[
+				"posi",
+				"position"
+			],
+			[
+				"border-ra",
+				"border-bottom-left-radius"
+			],
+			[
+				"baci",
+				"background-origin"
+			],
+			[
+				"profile",
+				"profileDetails"
+			],
+			[
+				"profil",
+				"profileDetails"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"col",
+				"columns"
+			],
+			[
+				"projectC",
+				"ProjectDescriptions"
+			],
+			[
+				"flex",
+				"flex-start"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"project",
+				"projectGameTWWP"
+			],
+			[
+				"projectGa",
+				"projectGameCC"
+			],
+			[
+				"projectG",
+				"projectGameCC"
+			],
+			[
+				"detai",
+				"detailBen"
+			],
+			[
+				"Galler",
+				"GalleryWrapperMiddle"
+			],
+			[
+				"class",
+				"classList"
+			],
+			[
+				"get",
+				"getElementById"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"alt",
+				"altSectionWrapper"
+			],
+			[
+				"f",
+				"font-size"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"inl",
+				"inline-block"
+			],
+			[
+				"circ",
+				"CircleHighlight"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"text",
+				"text-align"
+			],
+			[
+				"text-",
+				"text-decoration"
+			],
+			[
+				"color",
+				"color"
+			],
+			[
+				"Orange",
+				"OrangeBox"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"background",
+				"background-color"
+			],
+			[
+				"Circl",
+				"Circle"
+			],
+			[
+				"colo",
+				"color"
+			],
+			[
+				"backgroun",
+				"background-color"
+			],
+			[
+				"circl",
+				"Circle"
+			],
+			[
+				"border-top",
+				"border-top-style"
+			],
+			[
+				"border-top-",
+				"border-top-width"
+			],
+			[
+				"di",
+				"display"
+			],
+			[
+				"pos",
+				"pos"
+			],
+			[
+				"images",
+				"images-m"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"iScr",
+				"iScrollInstance"
+			],
+			[
+				"is",
+				"iScroll"
+			],
+			[
+				"backgrou",
+				"backgroundScrollX"
+			],
+			[
+				"posit",
+				"positionProperty"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 67.0,
+		"selected_items":
+		[
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"glsl",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control:",
+				"Package Control: Discover Packages"
+			],
+			[
+				"Package Control: PACK",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/benmiller/Documents/Academics/Parsons/Shader Studio/HelloWorld.frag",
+		"/Users/benmiller/cmake-3.3.1/README.rst",
+		"/Users/benmiller/Desktop/wp-config.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/views/view_model_face.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/views/view_model_topMenuItem.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/styles/style.scss",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/models/model_hairstyle.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/views/view_model_bottomMenuItem.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/hairFinderApp.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/myWebcam.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler/save_script.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler/controllers/Hairstyle.php",
+		"/Users/benmiller/Desktop/helloworld.txt",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/apiCalls.js",
+		"/Users/benmiller/Desktop/.htaccess (sub)",
+		"/Users/benmiller/Desktop/.htaccess_backup",
+		"/Users/benmiller/Desktop/.htaccess_wp",
+		"/Users/benmiller/Desktop/.htaccess",
+		"/Users/benmiller/Desktop/.htaccess_test",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/themes/hairfinder_theme/functions.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/json-api-user/controllers/User.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/libs/iviewer/jquery.iviewer.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler/hair_styler.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/libs/backbone.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/dm-confirm-email.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/models/login-confirm.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/themes/hairfinder_theme/style.scss",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/index.html",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/models/login-register.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/models/welcome_message.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/themes/hairfinder_theme/header.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/models/registration.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/models/plugin-page.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-login.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/themes/twentyfourteen/style.css",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/themes/hairfinder_theme/style.css",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/readme.txt",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/hair-styler-emailer/css/general.css",
+		"/Users/benmiller/Sites/benmirath.github.io/GamExplorer/js/script.js",
+		"/Users/benmiller/Desktop/script.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/pie-register/pie-register.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/app/js/models/model_bottomMenuItem.js",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/woocommerce-email-verification/includes/class-wev-email-verification.php",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/wp-content/plugins/woocommerce-email-verification/woocommerce-email-verification.php",
+		"/Applications/OpenFrameworks/apps/myApps/SingingComets/bin/data/pd/test.pd",
+		"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress/activate.php",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/contact.html",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/gallery.html",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/index.html",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/foundation-framework/css/foundation.css",
+		"/Users/benmiller/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/customShare.js",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/footerSlider.js",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/contact.css",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/about.css",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/gallery.css",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/slider_style3.css",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/foundation-framework/index.html",
+		"/Users/benmiller/Dropbox/Wild Wild Pixel/Website/index.html",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version1/index.html",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/stylesheets/skeleton.css",
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/index.html",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/myScript.js",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/iscroll.js",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/jquery.stellar.min.js",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/jquery.min.js",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts/stellar.js-master/jquery.stellar.js",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/style.css",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/index.html",
+		"/Users/benmiller/Documents/Academics/Parsons/Bootcamp/Web/example.html",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version1/style.css",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version 1/style.css",
+		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version 1/index.html"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/Users/benmiller/Sites/Fabraz/HairfinderApp",
+			"/Users/benmiller/Sites/Fabraz/HairfinderApp/wordpress",
+			"<open files>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"checkBrow",
+			"wordpress@",
+			"dataT",
+			"register",
+			"console",
+			"ABS",
+			"00181",
+			"MB",
+			"css",
+			"requestUpdateCust",
+			"clearCustom",
+			"iViewer",
+			"renderCustom",
+			"customFace_controls",
+			"customFace_c",
+			"h3",
+			"pointer",
+			"display",
+			"offsetInc",
+			"assignCustomFaceEvents",
+			"min-width",
+			"min-height",
+			"iviewer",
+			"set",
+			"delete",
+			"#imageFace",
+			"imageFace.src",
+			"imageFace",
+			"orig_wid",
+			"set_zoom",
+			"update",
+			"onload",
+			"userSetMetaImageURL",
+			"requestUserMeta",
+			"userM",
+			"custom",
+			"assignCustomFaceEvents",
+			"requestUserMe",
+			"updateCus",
+			"Backbone.Model",
+			"model",
+			"customFace",
+			"hover",
+			"PrimaryC",
+			"twentyfourteen",
+			".login form",
+			"login.css",
+			"eckey",
+			"ecke",
+			"confirm",
+			"function confirm",
+			"confirm",
+			"tags",
+			"gats",
+			"confirm_link",
+			"settings_page_dm_confirm_email_options",
+			"DM Confi",
+			"searchW",
+			"translate",
+			"no",
+			"3c",
+			"cc",
+			"F4",
+			"#",
+			"color",
+			"#eee",
+			"color",
+			"search",
+			"console",
+			"testObj",
+			"console",
+			"theme",
+			"toLowerC",
+			"removes",
+			"remove",
+			"theme",
+			"translate",
+			"sortTy",
+			"genre",
+			"PLUGIN_ALIAS",
+			"DmConfirmEmail",
+			"github",
+			"DmConfirmEmail",
+			"get_o",
+			"requestUserReg",
+			"requestUser",
+			"Registration_form",
+			"validateReg",
+			"wp_insert_user",
+			"register",
+			"1",
+			"login_email",
+			"register",
+			"hairstyle",
+			"ref",
+			"haircolor",
+			"if",
+			"Hair",
+			"hair",
+			"short",
+			"delete",
+			"webkit",
+			"moz",
+			"face",
+			"upload",
+			"cachedU",
+			"userProfile",
+			"testData",
+			"opacity",
+			"sortResult",
+			"sort",
+			"currentData",
+			"currentData.push",
+			"currendData.push",
+			"currentDa",
+			"assignDynamicEvents",
+			"currentSortGenre",
+			"currentData",
+			"currentGames",
+			"project",
+			"projectDescription",
+			"projectDesc",
+			"project",
+			"personDetail",
+			"projectDescr",
+			"peopleDescr",
+			"IndexD",
+			"IndexDesc"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"ProjectDescription",
+			"../images"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"",
+				"js/dataVis.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 333.0,
+	"status_bar_visible": true
+}
