@@ -12,6 +12,9 @@ void main() {
     gl_FragColor.r = abs(cos(u_time * (u_mouse.x / (u_resolution.x))));
     // gl_FragColor.r = abs(cos(u_time * 100.0));
     // gl_FragColor.r = abs(cos(u_time));
+    // vec2 mouse = u_mouse;
+    // mouse.x = 1.0-mouse.x;
+    // mouse.y = 1.0-mouse.y;
     gl_FragColor.g = pos.y * (u_mouse.y / u_resolution.y);
     gl_FragColor.b = abs(sin(u_time * (u_mouse.y / (u_resolution.y))));
     // gl_FragColor.b = u_mouse.x / u_resolution.x;
