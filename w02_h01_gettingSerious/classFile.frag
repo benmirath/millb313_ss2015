@@ -45,10 +45,10 @@ void main() {
 	// float pct = F(st.y, abs(sin(u_time)), 0.1);
 	float pct = F(st.x, p.x, 0.1);
 	
-	pct += F(st.x, abs(sin(u_time)), 0.02);
-	pct *= F(st.x, abs(sin(u_time)), 0.1);
+	// pct += F(st.x, abs(sin(u_time)), 0.02);
+	// pct *= F(st.x, abs(sin(u_time)), 0.1);
 	
-	// pct *= F(st.y, p.y, 0.1);
+	pct *= F(st.y, p.y, 0.1);
 	
 	// pct / 2;
 	col = vec3(pct);

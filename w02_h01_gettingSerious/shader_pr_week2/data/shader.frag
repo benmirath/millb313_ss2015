@@ -29,11 +29,15 @@ void main() {
 
 	vec2 coord = vec2 (0.0, 0.0);
     // if (u_time < 1)
-    coord.x = smoothstep (0.0, 0.5, abs(sin(u_time))) / 2.0;
+    coord.x = smoothstep (-1.0, 1.0, sin(u_time * 5.0)) / 2.0;
+    // coord.x = parabola (0.8, );
     coord.x -= 0.25;
-    coord.y = smoothstep (0.0, 0.5, sin(u_time)) / 4.0;
+    // coord.y = parabola (coord.x, 0.0000001);
+    coord.y = smoothstep (-1.0, 1.0, sin(u_time) / 2.0) / 5.0;
 
-    float x = parabola (0.8, u_time);
+    // coord
+
+    // float x = parabola (0.8, u_time);
     // float x = pcurve (0.4, 0.9, st.x);
     // coord.x = x;
     // col = vec3(F(st.y,x,0.03));
