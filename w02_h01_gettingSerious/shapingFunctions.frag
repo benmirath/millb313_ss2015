@@ -7,7 +7,7 @@ uniform vec2 u_resolution;
 // uniform vec2 u_mouse;
 
 float F (float _x, float _peak, float _width) {
-	return (smoothstep(_peak - (_width * 0.5), _peak, _x) + smoothstep(_peak + (_width * 0.5), _peak, _x)) - 1.0;
+	return (smoothstep(_peak - (_width * 0.5), _peak, _x) * (smoothstep(_peak + (_width * 0.5), _peak, _x)));
 }
 
 //example from online graphing
@@ -77,8 +77,7 @@ float parabola( float k, float x ) {
     return pow( 4.0*x*(1.0-x), k );
 }
 
-float pcurve( float a, float b, float x )
-{
+float pcurve( float a, float b, float x ) {
     float k = pow(a+b,a+b) / (pow(a,a)*pow(b,b));
     return k * pow( x, a ) * pow( 1.0-x, b );
 }
