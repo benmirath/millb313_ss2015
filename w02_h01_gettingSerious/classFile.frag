@@ -12,6 +12,7 @@ float F (float _x, float _peak, float _width) {
 	// return smoothstep(0.0,1.0,sin(_x*3.1415));
 	// return smoothstep(_width / 2.0,_peak,_x) - smoothstep(_peak,_width * 2.0,_x);
 	return (smoothstep(_peak - (_width * 0.5), _peak, _x) + smoothstep(_peak + (_width * 0.5), _peak, _x)) - 1.0;
+	// return 1.0 - pow ((_x - 1.0), peak);
 }
 
 //example from online graphing
@@ -32,6 +33,10 @@ float function(in float x) {
     return smoothstep(0.0,1.0,sin(pow(x,6.)*3.1415));
 }
 
+float plot (vec2 st, float pct){
+  return  smoothstep( pct-0.01, pct, st.y) - 
+          smoothstep( pct, pct+0.01, st.y);
+}
 
 
 void main() {
@@ -42,20 +47,24 @@ void main() {
 	// float pct = F(st.x, abs(sin(u_time)), 0.02);
 	// vec2 p = vec2(abs(sin(u_time*0.5)), abs(sin(u_time*0.5)));
 	vec2 p = vec2(cos(u_time*0.5), sin(u_time*0.5) * .25 + .5);
-	// float pct = F(st.y, abs(sin(u_time)), 0.1);
-	float pct = F(st.x, p.x, 0.1);
+	
+	//draw dot
+	float pct = F(st.y, abs(sin(u_time)), 0.1);
+	pct *= F(st.x, abs(sin(u_time)), 0.1);
+
+	// float pct = F(st.x, p.x, 0.1);
 	
 	// pct += F(st.x, abs(sin(u_time)), 0.02);
 	// pct *= F(st.x, abs(sin(u_time)), 0.1);
 	
-	pct *= F(st.y, p.y, 0.1);
+	// pct *= F(st.y, p.y, 0.1);
 	
 	// pct / 2;
 	col = vec3(pct);
 	// col = vec3(pct * 0.5);
 	// col = vec3(step (0.8, pct*0.5));
-	float x = pow(st.x, 10.0);
-	col = vec3(F(st.y,x,0.03));
+	// float x = pow(st.x, 10.0);
+	// col = vec3(F(st.y,x,0.03));
 	gl_FragColor = vec4(col, 1.0);
 
 }

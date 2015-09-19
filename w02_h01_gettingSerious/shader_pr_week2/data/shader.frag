@@ -32,8 +32,8 @@ void main() {
     coord.x = smoothstep (-1.0, 1.0, sin(u_time * 5.0)) / 2.0;
     // coord.x = parabola (0.8, );
     coord.x -= 0.25;
-    // coord.y = parabola (coord.x, 0.0000001);
-    coord.y = smoothstep (-1.0, 1.0, sin(u_time) / 2.0) / 5.0;
+    coord.y = (parabola (coord.x, 1.0)) - 0.25;
+    // coord.y = smoothstep (-1.0, 1.0, sin(u_time) / 2.0) / 5.0;
 
     // coord
 

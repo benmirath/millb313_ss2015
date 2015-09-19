@@ -25,6 +25,8 @@ vec4 DrawSquare_Outline (vec2 st, vec2 pos1, vec2 pos2) {
     vec2 bl = floor(st + 1.0 - pos1);   // bottom-left
     vec2 tr = floor(1.0 - st + pos2);   // top-right  
 
+
+    // col = vec3(F(st.y,x,0.03)) * (vec3 (1.0) - vec3(F(st.y,x,0.03)));
     vec3 color = vec3 (0.0);
     if (distance(st.x, pos1.x) < 0.01 
         || distance(st.y, pos1.y) < 0.01 
@@ -32,6 +34,7 @@ vec4 DrawSquare_Outline (vec2 st, vec2 pos1, vec2 pos2) {
         || distance (st.y, pos2.y) < 0.01) {
         color = vec3(bl.x * bl.y * tr.x * tr.y);    
     }
+    // vec3 color = vec3(bl.x * bl.y * tr.x * tr.y) * (vec3(1.0) - vec3(bl.x * bl.y * tr.x * tr.y));
     return vec4(color,1.0);
 }
 float plot (vec2 st, float pct){

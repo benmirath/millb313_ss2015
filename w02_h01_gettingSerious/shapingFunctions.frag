@@ -88,8 +88,12 @@ void main() {
 
 	// float x = impulse (8.1, st.x);
 	// float x = cubicPulse (0.5, 0.5, st.x);
-	// float x = parabola (0.8, st.x);
-	float x = pcurve (0.4, 0.9, st.x);
+	// float y = cubicPulse (0.5, 0.5, st.y);
+	float x = parabola (0.8, st.x);
+	// float x = pcurve (0.4, 0.9, st.x);
+	// col = vec3(F(st.y,x,0.03)) * (vec3 (1.0) - vec3(F(st.y,x,0.03)));
+	// col = vec3(F(st.y,x,0.03));
+	// col *= vec3(F(st.x,y,0.03));
 	col = vec3(F(st.y,x,0.03));
 
 	gl_FragColor = vec4(col, 1.0);
