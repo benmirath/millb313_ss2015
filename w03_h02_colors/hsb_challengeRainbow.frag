@@ -34,29 +34,30 @@ void main() {
     vec3 colF = vec3 (0.25,0.0,0.5);
     vec3 colG = vec3 (0.5,0.0,1.0);
 
-    color = mix (colA, colB, st.x);
-    color += mix (colB, colC, st.x);
-    color += mix (colC, colD, st.x);
-    color += mix (colD, colE, st.x);
-    color += mix (colE, colF, st.x);
-    color += mix (colF, colG, st.x);
+    // color = mix (colA, colB, st.x);
+    // color = mix (colA, colB, smoothstep (val, val * 2.0, st.x) - smoothstep (val * 2.0, val * 3.0, st.x));
+    // color += mix (colB, colC, smoothstep (val * 2.0, val * 3.0, st.x));
+    // color += mix (colC, colD, val * 3.0);
+    // color += mix (colD, colE, val * 4.0);
+    // color += mix (colE, colF, val * 5.0);
+    // color += mix (colF, colG, val * 6.0);
 
 
-    // if (val <= 1.0) {
-    //     color = vec3 (1.0,0.0,0.0);
-    // } else if (val <= 2.0) {
-    //     color = vec3 (1.0,0.5,0.0);
-    // } else if (val <= 3.0) {
-    //     color = vec3 (1.0,1.0,0.0);
-    // } else if (val <= 4.0) {
-    //     color = vec3 (0.0,1.0,0.0);
-    // } else if (val <= 5.0) {
-    //     color = vec3 (0.0,0.0,1.0);
-    // } else if (val <= 6.0) {
-    //     color = vec3 (0.25,0.0,0.5);
-    // } else {
-    //     color = vec3 (0.5,0.0,1.0);
-    // }
+    if (val <= 1.0) {
+        color = vec3 (1.0,0.0,0.0);
+    } else if (val <= 2.0) {
+        color = vec3 (1.0,0.5,0.0);
+    } else if (val <= 3.0) {
+        color = vec3 (1.0,1.0,0.0);
+    } else if (val <= 4.0) {
+        color = vec3 (0.0,1.0,0.0);
+    } else if (val <= 5.0) {
+        color = vec3 (0.0,0.0,1.0);
+    } else if (val <= 6.0) {
+        color = vec3 (0.25,0.0,0.5);
+    } else {
+        color = vec3 (0.5,0.0,1.0);
+    }
 
     gl_FragColor = vec4(color,1.0);
 }

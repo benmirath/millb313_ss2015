@@ -50,7 +50,7 @@ void main() {
 	
 	//draw dot
 	float pct = F(st.y, abs(sin(u_time)), 0.1);
-	pct *= F(st.x, abs(sin(u_time)), 0.1);
+	// pct *= F(st.x, abs(sin(u_time)), 0.1);
 
 	// float pct = F(st.x, p.x, 0.1);
 	

@@ -148,22 +148,23 @@ void main(){
         color = hsb2rgb(vec3((angle/TWO_PI)+0.5,radius,1.0));
         
         //bezier
-        // color.r = cubicBezier (color.r, 0.25, 0.32, 0.75, 0.25);
+        // color.r = cubicBezier (color.r, 0.25, 0.32, 0.95, 0.05);
         // color.g = cubicBezier (color.g, 0.25, 0.72, 0.75, 0.25);
         // color.b = cubicBezier (color.b, 0.25, 0.72, 0.75, 0.25);
         
         //circular
         // color.r = circularEaseIn (color.r);
         // color.g = circularEaseIn (color.g);
-        // color.b = circularEaseIn (color.b);
+        color.b = circularEaseIn (color.b);
 
         // exponential
-        color.r = exponentialEasing (color.r, 0.75);
+        color.r = exponentialEasing (color.r, 0.95);
         color.g = exponentialEasing (color.g, 0.3);
-        color.b = exponentialEasing (color.b, 0.75);
+        // color.b = exponentialEasing (color.b, 0.9);
 
         //doubleCubic
-        // float correctionB = 0.3;
+        // float correction = 0.1;
+        // float correctionB = 0.4;
         // color.r = doubleCubicSeat (color.r, correction, correctionB);
         // color.g = doubleCubicSeat (color.g, correction, correctionB);
         // color.b = doubleCubicSeat (color.b, correction, correctionB);         

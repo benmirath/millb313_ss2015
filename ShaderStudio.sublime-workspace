@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"color_b",
+				"color_Blue"
+			],
+			[
+				"colo",
+				"color_background"
+			],
+			[
+				"color",
+				"color_background"
+			],
+			[
+				"vec",
+				"vec4"
+			],
+			[
+				"Draw",
+				"DrawSquare_Smooth"
+			],
+			[
+				"smooth",
+				"smoothing"
+			],
+			[
+				"co",
+				"color_Blue"
+			],
+			[
+				"u",
+				"u_time"
+			],
+			[
+				"animra",
+				"animRange_radius"
+			],
+			[
+				"DrawC",
+				"DrawCircle_Manual"
+			],
+			[
+				"ve",
+				"vec2"
+			],
+			[
+				"correc",
+				"correction"
+			],
+			[
+				"u_",
+				"u_time"
+			],
+			[
 				"loo",
 				"loopVal1"
 			],
@@ -292,10 +344,6 @@
 				"text-decoration"
 			],
 			[
-				"color",
-				"color"
-			],
-			[
 				"Orange",
 				"OrangeBox"
 			],
@@ -310,10 +358,6 @@
 			[
 				"Circl",
 				"Circle"
-			],
-			[
-				"colo",
-				"color"
 			],
 			[
 				"backgroun",
@@ -408,6 +452,58 @@
 	},
 	"file_history":
 	[
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_sunset.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_flag.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/hsb_challengeRainbow.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/hsb_correctedWheel.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/classFile.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/color.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w04_h03_shapes/shapes_rect.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w04_h03_shapes/shapes_rectSmooth.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w04_h03_shapes/shapes_rectFloor.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w04_h03_shapes/shapes_rectFunction.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/villareal_attempt1.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/animationExperiments.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapingFunctions.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/classNotes.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_sunsetAnimated.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/README.md",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/movement2_birdHead.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/movement3_pigeonWalk.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/movement1_boTailWag.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w04_h03_shapes/shapes_distFields.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_rainbow.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shader_pr_week2/data/shader.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/interestingSplosion.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/hsb_spin.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_polarShapes.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_rectFunction.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/hsb_grow.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/hsb_spin.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_distFields.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_circleCompositions.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_circleGradient.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_circle.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_rectFloor.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/color_rainbow.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/color_flag.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/color_sunset.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/hsb_correctedWheel.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/color_sunsetAnimated.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_rectSmooth.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/FunctionLibrary.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w02_h01_gettingSerious/shapes_rect.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/shader_pr_week1/data/shader.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/HelloWorld_firstClass.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/lowFrequency.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/highFrequency.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/README.md",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/browser/index.html",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/mouse_and_time.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/threeChannels.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/frequency.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w01_h00_gettingStarted/HelloWorld.frag",
 		"/Users/benmiller/Documents/Academics/Parsons/Shader Studio/HelloWorld.frag",
 		"/Users/benmiller/cmake-3.3.1/README.rst",
 		"/Users/benmiller/Desktop/wp-config.php",
@@ -502,6 +598,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"1",
+			"Detector",
 			"checkBrow",
 			"wordpress@",
 			"dataT",
@@ -627,9 +725,7 @@
 			"project",
 			"personDetail",
 			"projectDescr",
-			"peopleDescr",
-			"IndexD",
-			"IndexDesc"
+			"peopleDescr"
 		],
 		"highlight": true,
 		"in_selection": false,
