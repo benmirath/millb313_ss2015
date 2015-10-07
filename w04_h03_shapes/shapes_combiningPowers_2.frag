@@ -55,7 +55,8 @@ vec3 colTL = vec3 (0.08, 0.00, 0.01);
 vec3 colTR = vec3 (0.37, 0.06, 0.16);
 vec3 colBL = vec3 (0.73, 0.04, 0.29);
 float squareOffset1 = 0.16;
-vec2 squareOffset2 = vec2 (-0.2, -0.1);
+vec2 squareOffset2 = vec2 (-0.315, -0.315);
+vec2 squareOffset3 = vec2 (-0.16, -0.48);
 
 void main(){
 	vec2 st = gl_FragCoord.xy/u_resolution.xy;
@@ -95,9 +96,32 @@ void main(){
 
 	float newSquare = DrawPolygon (
 		ModifyScreenSpace (st, vec2 (1.0), squareOffset2), 
-		4, 0.45, 0.0, PI
+		4, 0.45, 0.0, PI * 0.25
 	);
-	color += newSquare;
+	// color += newSquare;
+
+	color += vec3 (DistanceField_Min (
+		newSquare,
+		DrawPolygon (
+			ModifyScreenSpace (st, vec2 (1.0), vec2 (-squareOffset1, -squareOffset1)), 4, 0.32, 0.0, 0.0)
+		)
+	) * colBL;
+
+	float newSquare2 = DrawPolygon (
+		ModifyScreenSpace (st, vec2 (1.0), squareOffset3), 
+		4, 0.32, 0.0, PI
+	);
+
+	// color += newSquare2;
+
+	color += vec3 (DistanceField_Min (
+		newSquare2,
+		DrawPolygon (
+			ModifyScreenSpace (st, vec2 (1.0), squareOffset3), 4, 0.32, 0.0, PI * 0.25)
+		)
+	) * colBL;
+
+
 	// color += DistanceField_Min (newSquare, DrawPolygon (ModifyScreenSpace (st, vec2 (1.0), vec2 (-0.163, -0.163)), 4, 0.32, 0.0, 0.0));
 
 	// color = vec3 (startSquare) * colBR;
