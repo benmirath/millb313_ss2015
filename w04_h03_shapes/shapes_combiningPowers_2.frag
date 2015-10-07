@@ -54,6 +54,7 @@ vec3 colBR = vec3 (0.56, 0.09, 0.25);
 vec3 colTL = vec3 (0.08, 0.00, 0.01);
 vec3 colTR = vec3 (0.37, 0.06, 0.16);
 vec3 colBL = vec3 (0.73, 0.04, 0.29);
+vec3 colB = vec3 (0.53, 0.04, 0.19);
 float squareOffset1 = 0.16;
 vec2 squareOffset2 = vec2 (-0.315, -0.315);
 vec2 squareOffset3 = vec2 (-0.16, -0.48);
@@ -107,19 +108,26 @@ void main(){
 		)
 	) * colBL;
 
+	// float newSquare2 = DrawPolygon (
+	// 	ModifyScreenSpace (st, vec2 (1.0), vec2 (-0.32, -0.61)), 
+	// 	4, 0.4, 0.0, PI * 0.25
+	// );
 	float newSquare2 = DrawPolygon (
-		ModifyScreenSpace (st, vec2 (1.0), squareOffset3), 
-		4, 0.32, 0.0, PI
+		ModifyScreenSpace (st, vec2 (1.0), vec2 (-0.15, -0.48)), 
+		4, 0.315, 0.0, PI
 	);
 
 	// color += newSquare2;
-
+	float newBlock = DrawPolygon ( ModifyScreenSpace (st, vec2 (1.0), vec2 (0.01, -0.22)), 4, 0.6, 0.0, PI * 0.25);
+	// color += newBlock;
 	color += vec3 (DistanceField_Min (
 		newSquare2,
-		DrawPolygon (
-			ModifyScreenSpace (st, vec2 (1.0), squareOffset3), 4, 0.32, 0.0, PI * 0.25)
+		newBlock
+		// DrawPolygon (
+		// 	ModifyScreenSpace (st, vec2 (1.0), squareOffset3), 4, 0.32, 0.0, PI * 0.25)
+		// )
 		)
-	) * colBL;
+	) * colB;
 
 
 	// color += DistanceField_Min (newSquare, DrawPolygon (ModifyScreenSpace (st, vec2 (1.0), vec2 (-0.163, -0.163)), 4, 0.32, 0.0, 0.0));
