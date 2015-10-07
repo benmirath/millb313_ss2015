@@ -46,10 +46,10 @@ void main(){
   
     // Map the angle (-PI to PI) to the Hue (from 0 to 1)
     // and the Saturation to the radius
-    color = hsb2rgb(vec3((angle/TWO_PI),radius,1.0));        //trippy as balls    
+    color = hsb2rgb(vec3(doubleExponentialSigmoid((angle/TWO_PI), st.x),radius,1.0));        //trippy as balls
 
     //CIRCILIZE!!!
-    color *= step (0.0, 1.0 - radius);
+    // color *= step (0.0, 1.0 - radius);
 
     gl_FragColor = vec4(color,1.0);
 }

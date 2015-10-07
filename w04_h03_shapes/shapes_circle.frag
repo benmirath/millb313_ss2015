@@ -41,6 +41,6 @@ void main(){
 
 
     gl_FragColor = DrawCircle_Animdated (st, vec2 (0.3), 0.2, 0.1, abs (sin(u_time) * 0.1));
-    gl_FragColor += DrawCircle (st, vec2 (0.7), 0.4, 0.3);
+    gl_FragColor += DrawCircle (st, vec2 (0.7), 0.3, 0.3);
 	// gl_FragColor = vec4( color, 1.0 );
 }
