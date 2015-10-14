@@ -122,7 +122,10 @@ void main(){
     translationPos = matrix * pos;
 
     vec3 hitCol = vec3 (1.0, 1.0, 1.0);
-    if (distance(u_mouse, vec2 (0.5)) < 0.75) {
+    // if (distance(u_mouse, vec2 (0.5)) > 0.1) {
+    //     hitCol = vec3 (1.0, 0.0, 0.0);
+    // }
+    if (distance (u_mouse.xy, u_resolution.xy * vec2 (0.5)) < 50.0) {
         hitCol = vec3 (1.0, 0.0, 0.0);
     }
 
