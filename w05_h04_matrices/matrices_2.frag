@@ -117,7 +117,7 @@ void main(){
     vec3 pos = vec3 (st, 1.0);
     vec3 translationPos = vec3 (st, 1.0);
 
-    float mouseTranslation = (u_mouse.x / u_resolution.x) * 0.25;
+    float mouseTranslation = (-0.25 + (u_mouse.x / u_resolution.x) * 0.25);
 
 
     translate (vec2(-0.5 + mouseTranslation, -0.5));
