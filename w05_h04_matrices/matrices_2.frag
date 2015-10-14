@@ -117,7 +117,10 @@ void main(){
     vec3 pos = vec3 (st, 1.0);
     vec3 translationPos = vec3 (st, 1.0);
 
-    translate (vec2(-0.5));
+    float mouseTranslation = (u_mouse.x / u_resolution.x) * 0.25;
+
+
+    translate (vec2(-0.5 + mouseTranslation, -0.5));
     scale (vec2 (15.0));
     translationPos = matrix * pos;
 
@@ -125,6 +128,7 @@ void main(){
     // if (distance(u_mouse, vec2 (0.5)) > 0.1) {
     //     hitCol = vec3 (1.0, 0.0, 0.0);
     // }
+
     if (distance (u_mouse.xy, u_resolution.xy * vec2 (0.5)) < 50.0) {
         hitCol = vec3 (1.0, 0.0, 0.0);
     }
