@@ -52,14 +52,50 @@ float DistanceField_Circle (vec2 st, vec2 pos, float size, float shadowBuffer, f
     return pct;
 }
 
+mat3 matrix = mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0));
+
+mat3 scaleMatrix (vec2 f) {
+    return mat3 (
+        vec3 (f.x, 0.0, 0.0), 
+        vec3 (0.0, f.y, 0.0), 
+        vec3 (0.0, 0.0, 1.0)
+    );
+}
+void scale (in vec2 f) {
+    matrix = scaleMatrix (f) * matrix;
+}
+mat3 translationMatrix (vec2 f) {
+    return mat3 (
+        vec3 (1.0, 0.0, 0.0), 
+        vec3 (0.0, 1.0, 0.0), 
+        vec3 (f.x, f.y, 1.0)
+    );
+}
+void translate (in vec2 f) {
+    matrix = translationMatrix (f) * matrix;
+}
+mat3 rotationMatrix (float a) {
+    return mat3 (
+        vec3 (cos(a), -sin(a), 0.0), 
+        vec3 (sin (a), cos(a), 0.0), 
+        vec3 (0.0, 0.0, 1.0)
+    );
+}
+void rotate (float a) {
+    matrix = rotationMatrix (a) * matrix;
+}
+
 // vec3 col1 = vec3 (0.0,0.0,1.0);
 // vec3 col2 = vec3 (1.0,0.0,0.0);
 vec3 col1 = vec3 (0.07, 0.68, 0.6);
 vec3 col2 = vec3 (0.67, 0.13, 0.45);
 void main(){
 	vec2 st = gl_FragCoord.xy/u_resolution;
-    st *= 4.0;
-    st -= 1.5;
+    // st *= 4.0;
+    // st -= 1.5;
+
+    vec3 pos = vec3 (st, 1.0);
+    pos = matrix * pos;
 
     vec3 color = vec3 (0.0);
     float pct = 0.0;
@@ -106,9 +142,20 @@ void main(){
     //     )
     // );
 
+    // pct = min (
+    //     DistanceField_Circle (st, vec2 (0.5), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim - sin (u_time) ) ),
+    //     DistanceField_Circle (st, vec2 (0.5), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim + sin (u_time) ) )
+    // );
+
+    
+    translate (vec2 (-0.5));
+    scale (vec2 (8.0));
+    rotate (u_time);
+    
+    pos = matrix * pos;
     pct = min (
-        DistanceField_Circle (st, vec2 (0.5), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim - sin (u_time) ) ),
-        DistanceField_Circle (st, vec2 (0.5), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim + sin (u_time) ) )
+        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim - sin (u_time) ) ),
+        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim + sin (u_time) ) )
     );
 
 
@@ -152,10 +199,17 @@ void main(){
     // vec3 color = vec3 (1.0);
     // pct = 1.0 - step (pct, 0.1);
 
-    // gl_FragColor = vec4 (vec3 (pct), 1.0);      //BW
+    gl_FragColor = vec4 (vec3 (pct), 1.0);      //BW
     // gl_FragColor = vec4 ((pct * color2 * 2.0) * color * 2.0, 1.0);     //single color at time
-    gl_FragColor = vec4 ((pct * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
     // gl_FragColor = vec4 ((pct + color) * color, 1.0);   //weird oversaturation (pct is pushed over threshold by color addition?)
     // gl_FragColor = vec4 ((pct - color) * color, 1.0);   //ominous undersaturation (pct is pushed over threshold by color addition?)
     // gl_FragColor = vec4 ((pct / color2) * color, 1.0);  //weird tween for both shape and color
+
+    // MAIN EXAMPLE
+    // gl_FragColor = vec4 ((pct * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+
+    // ROTATION ADDITIONS
+    // gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+    // gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+
 }
