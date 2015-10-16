@@ -88,10 +88,14 @@ void main(){
     vec3 color = vec3 (0.0);
     vec3 pos = vec3 (st, 1.0);
 
-    // translate (vec2(-0.5));
-    translate (vec2 (-0.5 + sin(u_time) * 0.25, -0.5 -cos(u_time) * 0.25));
+    translate (vec2 (-.5)); //center
+
+    rotate (sin (u_time));
+    translate (vec2(0.0, 0.25));
+    // translate (vec2 (-0.5 + sin(u_time) * 0.25, -0.5 -cos(u_time) * 0.25));
     scale (vec2 (5));
-    rotate (u_time);
+    rotate (u_time - sin (u_time));
+
 
     pos = matrix * pos;
     color += cross (pos.xy, 0.4);

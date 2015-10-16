@@ -1,6 +1,9 @@
 // Author @patriciogv - 2015
 // http://patriciogonzalezvivo.com
 
+#define PI 3.14159265359
+#define TWO_PI 6.28318530718
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -8,6 +11,15 @@ precision mediump float;
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
+
+vec3 hsb2rgb( in vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0, 
+                     0.0, 
+                     1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix( vec3(1.0), rgb, c.y);
+}
 
 float _box(in vec2 st, in vec2 size){
 
@@ -114,7 +126,38 @@ vec4 DrawSquare (vec2 st, vec2 pos1, vec2 pos2) {
     vec3 color = vec3(bl.x * bl.y * tr.x * tr.y);
     return vec4(color,1.0);
 }
+float DrawPolygon (vec2 st, int sides, float size, float blur) {
+   float d = 0.0;
 
+  // Remap the space to -1. to 1.
+  st = st *2.0 - 1.0;
+
+  // Angle and radius from the current pixel
+  float angle = atan(st.x,st.y)+PI;
+  float radius = TWO_PI/float(sides);
+  
+  // Shaping function that modulate the distance
+  d = cos( floor ( 0.5 + angle / radius) * radius - angle) * length( st );
+
+  return 1.0 - smoothstep( size, size + blur ,d);
+}
+float DrawPolygonFract (vec2 st, int sides, float size, float blur) {
+   float d = 0.0;
+
+  // Remap the space to -1. to 1.
+  st = st *2.0 - 1.0;
+
+  // Angle and radius from the current pixel
+  float angle = atan(st.x,st.y)+PI;
+  float radius = TWO_PI/float(sides);
+
+  // radius = fract (radius);
+  
+  // Shaping function that modulate the distance
+  d = cos( floor ( 0.5 + angle / radius) * radius - angle) * length( st );
+
+  return 1.0 - smoothstep( size, size + blur , d);
+}
 
 void main(){
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
@@ -122,78 +165,25 @@ void main(){
     vec3 pos = vec3 (st, 1.0);
     vec3 translationPos = vec3 (st, 1.0);
 
-    float offset_center = smoothstep (.3, .7, u_mouse.x / u_resolution.x);
-    float offset_centerV = smoothstep (.3, .7, u_mouse.y / u_resolution.y);
-    float offset_left = offset_center;
-    float offset_right = offset_center;
+    float timePulse = sin (u_time * 0.25);
+    timePulse += 1.0;
+    timePulse *= 0.5;
 
-    offset_center -= 0.5;
-    offset_center *= 0.25;
-    offset_centerV -= 0.5;
-    offset_centerV *= 0.25;
+    translate (vec2(-0.5, -0.5));
+    scale (vec2 (80.0));
 
-    offset_left *= 0.025;
-
-    offset_right *= -1.0;
-    offset_right *= 0.025;
-
-
-    // float offset_left = smoothstep ()
-
-
-    translate (vec2(-0.5 + offset_center, -0.5 + offset_centerV));
-    scale (vec2 (15.0));
-    rotate (u_time);
+    rotate (u_time * 0.1);
     translationPos = matrix * pos;
+    float tri1 = (DrawPolygonFract (translationPos.xy, 3, 1.0 + (timePulse * 50.1), 100.0));
 
-    vec3 hitCol = vec3 (1.0, 1.0, 1.0);
-    // if (distance(u_mouse, vec2 (0.5)) > 0.1) {
-    //     hitCol = vec3 (1.0, 0.0, 0.0);
-    // }
-
-    if (distance (u_mouse.xy, u_resolution.xy * vec2 (0.5)) < 50.0) {
-        hitCol = vec3 (1.0, 0.0, 0.0);
-    }
-    color += (cross (translationPos.xy, 0.45) * hitCol);
-    
-    // resetMatrix ();
-    scale (vec2 (0.35));
-    rotate (-u_time);
-    translate (vec2 (2.25,-1.0));
+    rotate (-u_time * 0.2);
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.3));
+    float tri2 = (DrawPolygonFract (translationPos.xy, 3, 1.0 + (timePulse * 50.1), 100.0));
 
-    // resetMatrix ();
-    translate (vec2 (-4.5,0.0));
-    translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.3));
+    color +=  max (tri1, tri2);
 
-
-    translate (vec2 (0.25,0.25));
-    translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.2));
-
-    translate (vec2 (4.0,0.0));
-    translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.2));
-
-
-    translate (vec2 (-0.25,0.25));
-    translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.1));
-
-    translate (vec2 (-3.5,0.0));
-    translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.1));
-
-    translate (vec2 (1.0,0.5));
-    translationPos = matrix * pos;
-    color += (box (translationPos.xy, vec2 (0.49, -0.1)) * vec3 (1.0,0.0,0.0));
-
-    translate (vec2 (1.5,0.0));
-    translationPos = matrix * pos;
-    color += (box (translationPos.xy, vec2 (0.49, -0.1)) * vec3 (1.0,0.0,0.0));
-
+   
+    color *= hsb2rgb (vec3 (u_time * 0.05, 1.0, 1.0));
     // gl_FragColor = vec4( vec3( cross(pos.xy,0.4) ) ,1.0);
-    gl_FragColor = vec4( color ,1.0);
+    gl_FragColor = vec4( fract (color * 10.0),1.0);
 }

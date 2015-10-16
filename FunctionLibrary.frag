@@ -12,6 +12,58 @@ uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
 
+
+//====================================================================================
+//COLOR FUNCTIONS
+//====================================================================================
+vec3 hsb2rgb( in vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0, 
+                     0.0, 
+                     1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix( vec3(1.0), rgb, c.y);
+}
+
+//====================================================================================
+//MATRIX FUNCTIONS
+//====================================================================================
+mat3 scaleMatrix (vec2 f) {
+    return mat3 (
+        vec3 (f.x, 0.0, 0.0), 
+        vec3 (0.0, f.y, 0.0), 
+        vec3 (0.0, 0.0, 1.0)
+    );
+}
+mat3 translationMatrix (vec2 f) {
+    return mat3 (
+        vec3 (1.0, 0.0, 0.0), 
+        vec3 (0.0, 1.0, 0.0), 
+        vec3 (f.x, f.y, 1.0)
+    );
+}
+//a == angle
+mat3 rotationMatrix (float a) {
+    return mat3 (
+        vec3 (cos(a), -sin(a), 0.0), 
+        vec3 (sin (a), cos(a), 0.0), 
+        vec3 (0.0, 0.0, 1.0)
+    );
+}
+mat3 identityMatrix () {
+    return mat3 (
+        vec3 (1.0, 0.0, 0.0), 
+        vec3 (0.0, 1.0, 0.0), 
+        vec3 (0.0, 0.0, 1.0)
+    );
+}
+mat3 matrix = mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0));
+
+void scale (in vec2 f) { matrix = scaleMatrix (f) * matrix; }
+void translate (in vec2 f) { matrix = translationMatrix (f) * matrix; }
+void rotate (float a) { matrix = rotationMatrix (a) * matrix; }
+void resetMatrix () { matrix = identityMatrix(); }
+
 //====================================================================================
 //TRANSFORMATION FUNCTIONS
 //====================================================================================

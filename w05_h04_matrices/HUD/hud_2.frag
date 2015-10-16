@@ -5,6 +5,8 @@
 precision mediump float;
 #endif
 
+#define PI 3.14159265359
+
 uniform vec2 u_resolution;
 uniform vec2 u_mouse;
 uniform float u_time;
@@ -137,63 +139,98 @@ void main(){
     offset_right *= -1.0;
     offset_right *= 0.025;
 
+    float extremeOffset_center = smoothstep (.15, .85, u_mouse.x / u_resolution.x);
+    float extremeOffset_centerV = smoothstep (.15, .85, u_mouse.y / u_resolution.y);
+    extremeOffset_center -= 1.5;
+    extremeOffset_center *= 0.25;
+    extremeOffset_centerV -= 0.5;
+    extremeOffset_centerV *= 0.5;
 
-    // float offset_left = smoothstep ()
+    //align offset to follow mouse
+    offset_center *= -1.0;
+    offset_centerV *= -1.0;
 
-
-    translate (vec2(-0.5 + offset_center, -0.5 + offset_centerV));
+    //reticle
+    translate (vec2(offset_center + -0.5, offset_centerV + -0.5));
     scale (vec2 (15.0));
     rotate (u_time);
     translationPos = matrix * pos;
 
     vec3 hitCol = vec3 (1.0, 1.0, 1.0);
-    // if (distance(u_mouse, vec2 (0.5)) > 0.1) {
-    //     hitCol = vec3 (1.0, 0.0, 0.0);
-    // }
-
-    if (distance (u_mouse.xy, u_resolution.xy * vec2 (0.5)) < 50.0) {
-        hitCol = vec3 (1.0, 0.0, 0.0);
-    }
+    if (distance (u_mouse.xy, u_resolution.xy * vec2 (0.5)) < u_resolution.x * 0.05) { hitCol = vec3 (1.0, 0.0, 0.0);   }    //locked on!
     color += (cross (translationPos.xy, 0.45) * hitCol);
     
-    // resetMatrix ();
-    scale (vec2 (0.35));
-    rotate (-u_time);
-    translate (vec2 (2.25,-1.0));
+    //left bracket
+    resetMatrix ();
+    scale (vec2 (4.0));
+    translate (vec2 (offset_center + -1.5 ,offset_centerV + -2.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.3));
+    color += box (translationPos.xy, vec2 (0.49, -0.025));
 
-    // resetMatrix ();
-    translate (vec2 (-4.5,0.0));
+    translate (vec2 (-0.14 , -0.53));
+    rotate (PI * 0.5);
+    scale (vec2 (4.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.3));
+    color += box (translationPos.xy, vec2 (0.46, -0.1));
 
-
-    translate (vec2 (0.25,0.25));
+    translate (vec2 (4.15 , 0.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.2));
+    color += box (translationPos.xy, vec2 (0.46, -0.1));
 
-    translate (vec2 (4.0,0.0));
+    //right bracket
+    resetMatrix ();
+    scale (vec2 (4.0));
+    translate (vec2 (offset_center + -2.5 ,offset_centerV + -2.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.2));
+    color += box (translationPos.xy, vec2 (0.49, -0.025));
 
-
-    translate (vec2 (-0.25,0.25));
+    translate (vec2 (0.14 , -0.53));
+    rotate (PI * 0.5);
+    scale (vec2 (4.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.1));
+    color += box (translationPos.xy, vec2 (0.46, -0.1));
 
-    translate (vec2 (-3.5,0.0));
+    translate (vec2 (4.15 , 0.0));
     translationPos = matrix * pos;
-    color += box (translationPos.xy, vec2 (0.49, -0.1));
+    color += box (translationPos.xy, vec2 (0.46, -0.1));
 
-    translate (vec2 (1.0,0.5));
+    //left lines
+    resetMatrix ();
+    scale (vec2 (4.0));
+    translate (vec2 (extremeOffset_center + -.75 ,extremeOffset_centerV + -2.));
     translationPos = matrix * pos;
-    color += (box (translationPos.xy, vec2 (0.49, -0.1)) * vec3 (1.0,0.0,0.0));
+    color += box (translationPos.xy, vec2 (0.485, -0.4));
 
-    translate (vec2 (1.5,0.0));
+    resetMatrix ();
+    scale (vec2 (3.0));
+    translate (vec2 ((extremeOffset_center * 1.1) + -.3 ,(extremeOffset_centerV * 1.65) + -1.5));
     translationPos = matrix * pos;
-    color += (box (translationPos.xy, vec2 (0.49, -0.1)) * vec3 (1.0,0.0,0.0));
+    color += box (translationPos.xy, vec2 (0.49, -0.4));
 
-    // gl_FragColor = vec4( vec3( cross(pos.xy,0.4) ) ,1.0);
+    resetMatrix ();
+    scale (vec2 (2.5));
+    translate (vec2 ((extremeOffset_center * 1.2) + -.03 ,(extremeOffset_centerV * 1.99) + -1.25));
+    translationPos = matrix * pos;
+    color += box (translationPos.xy, vec2 (0.49, -0.4));
+
+    //right lines
+    resetMatrix ();
+    scale (vec2 (4.0));
+    translate (vec2 (extremeOffset_center + -2.75 ,extremeOffset_centerV + -2.));
+    translationPos = matrix * pos;
+    color += box (translationPos.xy, vec2 (0.485, -0.4));
+
+    resetMatrix ();
+    scale (vec2 (3.0));
+    translate (vec2 ((extremeOffset_center * 1.1) + -2.15 ,(extremeOffset_centerV * 1.65) + -1.5));
+    translationPos = matrix * pos;
+    color += box (translationPos.xy, vec2 (0.49, -0.4));
+
+    resetMatrix ();
+    scale (vec2 (2.5));
+    translate (vec2 ((extremeOffset_center * 1.2) + -1.87 ,(extremeOffset_centerV * 1.99) + -1.25));
+    translationPos = matrix * pos;
+    color += box (translationPos.xy, vec2 (0.49, -0.4));
+
     gl_FragColor = vec4( color ,1.0);
 }

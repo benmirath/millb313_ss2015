@@ -154,9 +154,11 @@ void main(){
     
     pos = matrix * pos;
     pct = min (
-        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim - sin (u_time) ) ),
-        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.075), vec2 (posAnim + sin (u_time) ) )
+        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.05), vec2 (posAnim - sin (u_time) ) ),
+        DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (sin (u_time) * 0.05), vec2 (posAnim + sin (u_time) ) )
     );
+
+    pct += DistanceField_Circle (pos.xy, vec2 (0.0), 0.4, 0.0, abs (cos (u_time) * 0.05), vec2 (posAnim + cos (u_time) ) );
 
 
     // pct = mix ( 
@@ -209,7 +211,7 @@ void main(){
     // gl_FragColor = vec4 ((pct * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
 
     // ROTATION ADDITIONS
-    // gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
-    // gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+    gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+    gl_FragColor = vec4 ((pos * (color2 + color) * cos (u_time)) * color / sin(u_time), 1.0);     //single color at time
 
 }
