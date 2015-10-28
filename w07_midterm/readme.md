@@ -5,3 +5,6 @@ Core Values when creating function library
 
 web player version
 http://benmirath.itch.io/shader-test-1
+
+Unity project repository:
+https://github.com/benmirath/shaderTest1
