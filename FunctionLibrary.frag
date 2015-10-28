@@ -81,32 +81,111 @@ vec2 ModifyScreenSpace (vec2 st, float scale, float translate) {
   return newSt;
 }
 
+//====================================================================================
+//PATTERN FUNCTIONS
+//====================================================================================
+vec2 tile(vec2 _st, vec2 _zoom){
+    _st.xy *= _zoom.xy;
+    return fract(_st);
+}
+vec2 tile(vec2 _st, float _zoom){
+    return tile (_st, vec2 (_zoom));
+}
+vec2 tileOffset (vec2 _st, vec2 _zoom) {
+    _st.xy *= _zoom.xy;
+
+    vec2 st_i = floor(_st);
+    if (mod(st_i.y,2.) == 1.) { //create x offset every other row
+        _st.x += .5;
+    }
+
+    return fract(_st);
+}
+vec2 tileOffset (vec2 _st, float _zoom) {
+    return tileOffset (_st, vec2 (_zoom));
+}
+vec2 tileMove(vec2 _st, vec2 _zoom, float _speed){
+    _st.xy *= _zoom.xy;
+
+    float time = u_time * _speed;
+    if( fract(time)>0.5 ){
+        if (fract( _st.y * 0.5) > 0.5){
+            _st.x += fract(time)*2.0;
+        } else {
+            _st.x -= fract(time)*2.0;
+        } 
+    } else {
+        if (fract( _st.x * 0.5) > 0.5){
+            _st.y += fract(time)*2.0;
+        } else {
+            _st.y -= fract(time)*2.0;
+        } 
+    }
+
+    return fract(_st);
+}
+vec2 tileMove(vec2 _st, float _zoom, float _speed){
+    return tileMove (_st, vec2 (_zoom), _speed);
+}
+
+float addBorder (vec2 _st, float _thickness) {
+    float col = 0.;
+    col += step (_st.x, _thickness);
+    col += 1. - step (_st.x, 1. - _thickness);
+    col += step (_st.y, _thickness);
+    col += 1. - step (_st.y, 1. - _thickness);
+    return col;
+}
+
+//====================================================================================
+//SHAPING FUNCTIONS
+//====================================================================================
+//Use on a variable you want to animate in a pulsing manner
+float pulse (vec2 _st, vec2 _origin, float _magnitude, float _speed) {
+    float d = distance(_st, _origin);
+    d = sin(d * _magnitude - (u_time * _speed));
+    return d;
+} 
 
 //====================================================================================
 //DRAWING FUNCTIONS
 //====================================================================================
-vec4 DrawSquare (vec2 st, vec2 pos1, vec2 pos2) {
-    vec2 bl = floor(st + 1.0 - pos1);    // bottom-left
-    vec2 tr = floor(1.0 - st + pos2);   // top-right     
-    vec3 color = vec3(bl.x * bl.y * tr.x * tr.y);
-    return vec4(color,1.0);
+
+//STANDALONE
+float box(vec2 _st, vec2 _size){
+    _size = vec2(0.5)-_size*0.5;
+    vec2 uv = smoothstep(_size,_size+vec2(1e-4),_st); //1e-4 == 0.00004;
+    uv *= smoothstep(_size,_size+vec2(1e-4), vec2(1.0) - _st);
+    return uv.x * uv.y;
 }
-
-float DrawPolygon (vec2 st, int sides, float size, float blur) {
-   float d = 0.0;
-
-  // Remap the space to -1. to 1.
-  st = st *2.0 - 1.0;
-
-  // Angle and radius from the current pixel
-  float angle = atan(st.x,st.y)+PI;
+float circle(vec2 st, float radius){
+    vec2 pos = vec2(0.5)-st;
+    radius *= 0.75;
+    return 1.-smoothstep(radius-(radius*0.05),radius+(radius*0.05),dot(pos,pos)*3.14);
+}
+float polygon (vec2 st, int sides, float size, float blur) {
+  st = st *2.0 - 1.0; // Remap the space to -1. to 1.
+  float angle = atan(st.x,st.y)+PI;   // Angle and radius from the current pixel
   float radius = TWO_PI/float(sides);
-  
-  // Shaping function that modulate the distance
-  d = cos( floor ( 0.5 + angle / radius) * radius - angle) * length( st );
-
+  float d = cos( floor ( 0.5 + angle / radius) * radius - angle) * length( st );      // Shaping function that modulate the distance
   return 1.0 - smoothstep( size, size + blur ,d);
 }
+
+//PATTERNS
+float boxPattern(vec2 st, vec2 size) {
+    return  box(st+vec2(0.,-.5), size)+
+            box(st+vec2(0.,.5), size)+
+            box(st+vec2(-.5,0.), size)+
+            box(st+vec2(.5,0.), size);
+}
+float circlePattern(vec2 st, float radius) {
+    return  circle(st+vec2(0.,-.5), radius)+
+            circle(st+vec2(0.,.5), radius)+
+            circle(st+vec2(-.5,0.), radius)+
+            circle(st+vec2(.5,0.), radius);
+}
+
+
 
 //crop first value with second value
 float DistanceField_Min (float fieldVal1, float fieldVal2) {
@@ -125,16 +204,17 @@ void main(){
     // gl_FragColor = DrawSquare (st, vec2 (0.3,0.2), vec2 (0.9,0.9));
 
     vec3 color = vec3 (0.0);
-    color = vec3 (DrawPolygon (st, 2, 0.4, 0.01));
-    color = vec3 (DrawPolygon (st, 8, 0.4, 0.01));
-    color = vec3( 
-        DistanceField_Min ( 
-            DrawPolygon (st, 5, 0.4, 0.01), 
-            // DrawPolygon (st, 2, 0.4, 0.01)
-            DrawPolygon (ModifyScreenSpace (st, 2.0, 0.25), 5, 0.4, 0.01)
-        ) 
-    );
+    // color = vec3 (DrawPolygon (st, 2, 0.4, 0.01));
+    // color = vec3 (DrawPolygon (st, 8, 0.4, 0.01));
+    // color = vec3( 
+    //     DistanceField_Min ( 
+    //         DrawPolygon (st, 5, 0.4, 0.01), 
+    //         // DrawPolygon (st, 2, 0.4, 0.01)
+    //         DrawPolygon (ModifyScreenSpace (st, 2.0, 0.25), 5, 0.4, 0.01)
+    //     ) 
+    // );
     gl_FragColor = vec4 (color, 1.0);
+
 
 
 
