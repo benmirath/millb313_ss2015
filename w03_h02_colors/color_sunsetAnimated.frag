@@ -1,3 +1,7 @@
+// Author: Ben Miller
+// twitter: @diaBeets - 2015
+// http://fabraz.com
+
 #ifdef GL_ES
 precision mediump float;
 #endif

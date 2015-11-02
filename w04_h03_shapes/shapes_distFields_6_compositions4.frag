@@ -1,3 +1,7 @@
+// Author: Ben Miller
+// twitter: @diaBeets - 2015
+// http://fabraz.com
+
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -193,7 +197,7 @@ void main(){
     // color = mix (col1, col2, sin (u_time));
     color = mix (col2, col1, pct + sin (u_time));
     // vec3 color2 = color;
-    // vec3 color2 = mix (col1, col2, pct + sin (u_time));
+    vec3 color2 = mix (col1, col2, pct + sin (u_time));
     // color = mix (color, color2, pct);
 
     
@@ -205,13 +209,13 @@ void main(){
     // gl_FragColor = vec4 ((pct * color2 * 2.0) * color * 2.0, 1.0);     //single color at time
     // gl_FragColor = vec4 ((pct + color) * color, 1.0);   //weird oversaturation (pct is pushed over threshold by color addition?)
     // gl_FragColor = vec4 ((pct - color) * color, 1.0);   //ominous undersaturation (pct is pushed over threshold by color addition?)
-    // gl_FragColor = vec4 ((pct / color2) * color, 1.0);  //weird tween for both shape and color
+    gl_FragColor = vec4 ((pct / color2) * color, 1.0);  //weird tween for both shape and color
 
     // MAIN EXAMPLE
-    // gl_FragColor = vec4 ((pct * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+    gl_FragColor = vec4 ((pct * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
 
     // ROTATION ADDITIONS
-    // gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
+    gl_FragColor = vec4 ((pos * (color2 + color) * 3.0) * color * 2.0, 1.0);     //single color at time
     // gl_FragColor = vec4 ((pos * (color2 + color) * cos (u_time)) * color / sin(u_time), 1.0);     //single color at time
 
 }

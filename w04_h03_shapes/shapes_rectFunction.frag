@@ -1,5 +1,6 @@
-// Author @patriciogv - 2015    //modified by Ben...
-// http://patriciogonzalezvivo.com
+// Author: Ben Miller
+// twitter: @diaBeets - 2015
+// http://fabraz.com
 
 #ifdef GL_ES
 precision mediump float;

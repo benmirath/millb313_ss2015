@@ -1,5 +1,5 @@
-// Author @diaBEETS ( ben miller ) - 2015
-// Inspired by the Patterns of Nina Warmerdam ( www.behance.net/ninawarmerdam )
+// Author: @diaBeets (ben miller) - 2015
+// http://fabraz.com
 
 #ifdef GL_ES
 precision mediump float;
