@@ -1,5 +1,5 @@
-// Author @patriciogv - 2015    //modified by Ben...
-// http://patriciogonzalezvivo.com
+// Author: @diaBEETS (ben miller) - 2015
+// http://fabraz.com
 
 #ifdef GL_ES
 precision mediump float;
@@ -28,41 +28,23 @@ vec3 hsb2rgb( in vec3 c ){
 //====================================================================================
 //MATRIX FUNCTIONS
 //====================================================================================
-mat3 scaleMatrix (vec2 f) {
-    return mat3 (
-        vec3 (f.x, 0.0, 0.0), 
-        vec3 (0.0, f.y, 0.0), 
-        vec3 (0.0, 0.0, 1.0)
-    );
-}
-mat3 translationMatrix (vec2 f) {
-    return mat3 (
-        vec3 (1.0, 0.0, 0.0), 
-        vec3 (0.0, 1.0, 0.0), 
-        vec3 (f.x, f.y, 1.0)
-    );
-}
-//a == angle
-mat3 rotationMatrix (float a) {
-    return mat3 (
-        vec3 (cos(a), -sin(a), 0.0), 
-        vec3 (sin (a), cos(a), 0.0), 
-        vec3 (0.0, 0.0, 1.0)
-    );
-}
-mat3 identityMatrix () {
-    return mat3 (
-        vec3 (1.0, 0.0, 0.0), 
-        vec3 (0.0, 1.0, 0.0), 
-        vec3 (0.0, 0.0, 1.0)
-    );
-}
-mat3 matrix = mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0));
+mat3 scale (vec2 f) { return mat3 ( vec3 (f.x, 0.0, 0.0), vec3 (0.0, f.y, 0.0), vec3 (0.0, 0.0, 1.0) ); }
+mat3 translate (vec2 f) { return mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (f.x, f.y, 1.0) ); }
+mat3 rotate (float a) { return mat3 ( vec3 (cos(a), -sin(a), 0.0), vec3 (sin (a), cos(a), 0.0), vec3 (0.0, 0.0, 1.0) ); }
+mat3 identityMatrix () { return mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0) ); }
 
-void scale (in vec2 f) { matrix = scaleMatrix (f) * matrix; }
-void translate (in vec2 f) { matrix = translationMatrix (f) * matrix; }
-void rotate (float a) { matrix = rotationMatrix (a) * matrix; }
-void resetMatrix () { matrix = identityMatrix(); }
+mat2 scale (vec2 f) { return mat2 ( vec2 (f.x, 0.0), vec2 (0.0, f.y)); }
+mat2 translate (vec2 f) { return mat2 ( vec2 (0.0, 1.0), vec2 (f.x, f.y) ); }
+mat2 rotate (float a) { return mat2 ( vec2 (cos(a), -sin(a)), vec2 (sin (a), cos(a))); }
+mat2 identityMatrix () { return mat2 ( vec2 (1.0, 0.0), vec2 (0.0, 1.0)); }
+
+//training wheels version
+// mat3 matrix = mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0));
+// void scaleMatrix (in vec2 f) { matrix = scale (f) * matrix; }
+// void translateMatrix (in vec2 f) { matrix = translation (f) * matrix; }
+// void rotateMatrix (float a) { matrix = rotation (a) * matrix; }
+// void resetMatrix () { matrix = identityMatrix(); }
+
 
 //====================================================================================
 //TRANSFORMATION FUNCTIONS
@@ -136,6 +118,46 @@ float addBorder (vec2 _st, float _thickness) {
     col += 1. - step (_st.y, 1. - _thickness);
     return col;
 }
+
+//====================================================================================
+//META-SHAPING FUNCTIONS (shaping functions for shaping functions)
+//====================================================================================
+//generate a seeming random value between 0-1 by getting the dot value of the screen coord and multiplying it by a huge value.
+float random (float _x) {
+    return fract(sin(_x)*100000.0);
+}
+
+float random (in vec2 _st) { 
+    return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float noise (float _x) {
+    float i = floor(_x);  // integer
+    float f = fract(_x);  // fraction
+    return mix(random(i), random(i + 1.0), smoothstep(0.,1.,f));
+}
+float noise (in vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+    // Smooth Interpolation
+
+    // Cubic Hermine Curve.  Same as SmoothStep()
+    vec2 u = f*f*(3.0-2.0*f);
+    // u = smoothstep(0.,1.,f);
+
+    // Mix 4 coorners porcentages
+    return mix(a, b, u.x) + 
+            (c - a)* u.y * (1.0 - u.x) + 
+            (d - b) * u.x * u.y;
+}
+
 
 //====================================================================================
 //SHAPING FUNCTIONS

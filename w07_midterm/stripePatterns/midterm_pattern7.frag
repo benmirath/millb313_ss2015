@@ -1,4 +1,4 @@
-// Author: @diaBeets (ben miller) - 2015
+// Author: @diaBEETS (ben miller) - 2015
 // http://fabraz.com
 
 #ifdef GL_ES
