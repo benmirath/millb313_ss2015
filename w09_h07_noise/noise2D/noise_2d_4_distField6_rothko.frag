@@ -101,21 +101,79 @@ float addGyration (vec2 _st, float intensity, float freq, float speed, float ran
     // return noise (sin (u_time * dot (_st.x, _st.y)) * 5.) * noise (random (_st) * intensity);
     return noise (sin (noise (u_time * speed) * range * dot (_st.x, _st.y)) * freq) * noise (random (_st) * intensity);
 }
+vec3 returnColor (vec3 col) {
+    return col / 255.;
+}
+
+
+
+// void addColor (out vec3 curColor, vec3  newColor, float intensity) {
+vec3 addColorF (vec3 curColor, vec3  newColor, float intensity) {
+    vec3 col = curColor;
+    col *= step (intensity, 0.0);
+    col += newColor * (1. - step (intensity, 0.));
+    return col;
+}
+
+// vec3 addColor (vec3 curColor, vec3  newColor, float intensity) {
+//     vec3 col = curColor;
+
+//     col *= step (intensity, 0.0);
+//     col += newColor * (1. - step (intensity, 0.));
+
+//     return col;
+// }
+
+void addColor (out vec3 curColor, vec3  newColor, float intensity) {
+    vec3 col = curColor;
+    col *= step (intensity, 0.0);
+    col += newColor * (1. - step (intensity, 0.));
+    curColor = col;
+}
+
+vec3 scratchCol1 = vec3 (.5,0.,0.0);
+vec3 scratchCol2 = vec3 (.5,0.5,0.0);
+vec3 scratchCol3 = vec3 (.25,0.95,0.0);
+vec3 scratchCol4 = returnColor (vec3 (112., 229., 255));
 
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    st *= 2.;
-    st -= 1.;
+    // st *= 2.;
+    // st -= 1.;
 
-    float pct = box (st + vec2 (noise (st * u_time)), vec2 (0.3, 0.75));
-    // float pct2 = box (st + vec2 (addBlur (st, 0.3)), vec2 (0.3, 0.75));
-    float pct2 = box (st + vec2 (addStroke (st, 0.5, 65. + (sin (noise (u_time)) * 15.))), vec2 (0.3, 0.75));
-    // float pct2 = box (st + vec2 (addGyration (st, 0.5, 4., 3., 5.)), vec2 (0.3, 0.75));
+    vec3 col = vec3 (0.);
 
+    //box 1
+    st.x += .33;
+    float freqAnimation = 65. + (sin (noise (u_time)) * 15.);
+    float box1 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
+    // col += box1;
+    col = addColorF (col, box1 * vec3 (1.), box1);
 
     
+    //box 2
+    st.x -= .33;
+    float freqAnimation2 = min (sin (noise (u_time)) + cos (noise (u_time)), 0.05);
+    float box2 = box (st + vec2 (addBlur (st, 0.5 - freqAnimation2)), vec2 (0.275, 0.75));      //create blurred mask
+    float boxStroke = box (st + vec2 (addStroke (st - vec2 (-0.3, 0.), 1.5, 250.)), vec2 (0.275, 0.75));    //sharp stroke 1
+    float boxStroke2 = box (st + vec2 (addStroke (st - vec2 (1.3, 0.), 50.5, 1000.)), vec2 (0.5, 0.75));    //sharp stroke 2
+   
+    col = addColorF (col, scratchCol1 * box2, boxStroke * box2);
+    col = addColorF (col, scratchCol2 * box2, boxStroke2 * box2);
+    
+    //box 3
+    st.x -= .33;
+    float freqAnimation3 = 5. + (sin (noise (u_time)) * 15.);
+    float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation3)), vec2 (0.275, 0.75));
+    col = addColorF (col, scratchCol4 * box3, box3);
+    
     float adj = (u_mouse.y / u_resolution.y) * 25.;
-    vec3 col = vec3 ( noise(abs (sin (u_time))) + pct2);
+    
 
     gl_FragColor = vec4(col, 1.0);
 }
+
+
+
+
+

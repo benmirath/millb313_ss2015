@@ -108,9 +108,8 @@ void main () {
     st -= 1.;
 
     float pct = box (st + vec2 (noise (st * u_time)), vec2 (0.3, 0.75));
-    // float pct2 = box (st + vec2 (addBlur (st, 0.3)), vec2 (0.3, 0.75));
-    float pct2 = box (st + vec2 (addStroke (st, 0.5, 65. + (sin (noise (u_time)) * 15.))), vec2 (0.3, 0.75));
-    // float pct2 = box (st + vec2 (addGyration (st, 0.5, 4., 3., 5.)), vec2 (0.3, 0.75));
+    float freqAnimation = 65. + (sin (noise (u_time)) * 15.);
+    float pct2 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.3, 0.75));
 
 
     
@@ -119,3 +118,8 @@ void main () {
 
     gl_FragColor = vec4(col, 1.0);
 }
+
+
+
+
+

@@ -31,10 +31,10 @@ float function(in float x) {
 }
 
 float valueNoise () {
-	return 0;
+	return 0.;
 }
 float gradientNoise () {
-	return 0;
+	return 0.;
 }
 
 void main () {
