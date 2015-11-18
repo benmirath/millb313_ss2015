@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"mous",
+				"u_mouse"
+			],
+			[
 				"color_b",
 				"color_Blue"
 			],
@@ -411,6 +415,70 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "w09_h06_noise/classFile.frag",
+			"settings":
+			{
+				"buffer_size": 732,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/movingGrid.frag",
+			"settings":
+			{
+				"buffer_size": 2140,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/movingGrid2.frag",
+			"settings":
+			{
+				"buffer_size": 2408,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/matrix1.frag",
+			"settings":
+			{
+				"buffer_size": 2235,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/matrix2.frag",
+			"settings":
+			{
+				"buffer_size": 2294,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/matrix3.frag",
+			"settings":
+			{
+				"buffer_size": 2139,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/randomMidtermPattern3.frag",
+			"settings":
+			{
+				"buffer_size": 4198,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "w08_h06_random/randomMidtermPattern.frag",
+			"settings":
+			{
+				"buffer_size": 3401,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -452,6 +520,21 @@
 	},
 	"file_history":
 	[
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/randomMidtermPattern2.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/effectExperiment.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/randomMidtermPattern3.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/randomMidtermPattern.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/movingGrid2.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/movingGrid.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/matrix2.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/matrix3.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w08_h06_random/matrix1.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w07_midterm/squarePatterns/midterm_pattern4.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w07_midterm/stripePatterns/midterm_pattern8.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w07_midterm/stripePatterns/midterm_pattern5.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w07_midterm/stripePatterns/midterm_pattern6.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w07_midterm/stripePatterns/midterm_pattern7.frag",
+		"/Users/benmiller/Projects/millb313_ss2015/w05_h04_matrices/HUD/hud_2.frag",
 		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_sunset.frag",
 		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/color_flag.frag",
 		"/Users/benmiller/Projects/millb313_ss2015/w03_h02_colors/hsb_challengeRainbow.frag",
@@ -564,19 +647,7 @@
 		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/foundation-framework/index.html",
 		"/Users/benmiller/Dropbox/Wild Wild Pixel/Website/index.html",
 		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version1/index.html",
-		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/stylesheets/skeleton.css",
-		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/index.html",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/myScript.js",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/iscroll.js",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/jquery.stellar.min.js",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts2/jquery.min.js",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/scripts/stellar.js-master/jquery.stellar.js",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/style.css",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/index.html",
-		"/Users/benmiller/Documents/Academics/Parsons/Bootcamp/Web/example.html",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version1/style.css",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version 1/style.css",
-		"/Users/benmiller/Dropbox/Planet Diver/Website/Old/Version 1/index.html"
+		"/Users/benmiller/Dropbox/Fabraz Company/Website/Company/scripts/skeleton-framework/stylesheets/skeleton.css"
 	],
 	"find":
 	{
@@ -745,8 +816,233 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "w09_h06_noise/classFile.frag",
+					"settings":
+					{
+						"buffer_size": 732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								732,
+								732
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "w08_h06_random/movingGrid.frag",
+					"settings":
+					{
+						"buffer_size": 2140,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "w08_h06_random/movingGrid2.frag",
+					"settings":
+					{
+						"buffer_size": 2408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1811,
+								2408
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 191.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "w08_h06_random/matrix1.frag",
+					"settings":
+					{
+						"buffer_size": 2235,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1913,
+								1913
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 251.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "w08_h06_random/matrix2.frag",
+					"settings":
+					{
+						"buffer_size": 2294,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "w08_h06_random/matrix3.frag",
+					"settings":
+					{
+						"buffer_size": 2139,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "w08_h06_random/randomMidtermPattern3.frag",
+					"settings":
+					{
+						"buffer_size": 4198,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1376.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "w08_h06_random/randomMidtermPattern.frag",
+					"settings":
+					{
+						"buffer_size": 3401,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								360,
+								360
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/OpenGL Shading Language (GLSL)/GLSL.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -783,7 +1079,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 100.0
+		"height": 221.0
 	},
 	"replace":
 	{

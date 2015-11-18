@@ -30,8 +30,14 @@ mat3 translate (vec2 f) { return mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.
 mat3 rotate (float a) { return mat3 ( vec3 (cos(a), -sin(a), 0.0), vec3 (sin (a), cos(a), 0.0), vec3 (0.0, 0.0, 1.0) ); }
 mat3 identityMatrix () { return mat3 ( vec3 (1.0, 0.0, 0.0), vec3 (0.0, 1.0, 0.0), vec3 (0.0, 0.0, 1.0) ); }
 
+//vector version
 mat2 scale (vec2 f) { return mat2 ( vec2 (f.x, 0.0), vec2 (0.0, f.y)); }
 mat2 translate (vec2 f) { return mat2 ( vec2 (0.0, 1.0), vec2 (f.x, f.y) ); }
+
+//float version
+mat2 scale (float f) { return mat2 ( vec2 (f, 0.0), vec2 (0.0, f)); }
+mat2 translate (float f) { return mat2 ( vec2 (0.0, 1.0), vec2 (f, f) ); }
+
 mat2 rotate (float a) { return mat2 ( vec2 (cos(a), -sin(a)), vec2 (sin (a), cos(a))); }
 mat2 identityMatrix () { return mat2 ( vec2 (1.0, 0.0), vec2 (0.0, 1.0)); }
 
@@ -120,13 +126,8 @@ float addBorder (vec2 _st, float _thickness) {
 //META-SHAPING FUNCTIONS (shaping functions for shaping functions)
 //====================================================================================
 //generate a seeming random value between 0-1 by getting the dot value of the screen coord and multiplying it by a huge value.
-float random (float _x) {
-    return fract(sin(_x)*100000.0);
-}
-
-float random (in vec2 _st) { 
-    return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123);
-}
+float random (float _x) { return fract(sin(_x)*100000.0); }
+float random (in vec2 _st) { return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123); }
 
 float noise (float _x) {
     float i = floor(_x);  // integer
@@ -144,10 +145,7 @@ float noise (in vec2 st) {
     float d = random(i + vec2(1.0, 1.0));
 
     // Smooth Interpolation
-
-    // Cubic Hermine Curve.  Same as SmoothStep()
-    vec2 u = f*f*(3.0-2.0*f);
-    // u = smoothstep(0.,1.,f);
+    vec2 u = smoothstep(0.,1.,f);
 
     // Mix 4 coorners porcentages
     return mix(a, b, u.x) + 

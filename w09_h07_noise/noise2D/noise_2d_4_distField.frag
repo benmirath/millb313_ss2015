@@ -43,11 +43,29 @@ float random (in vec2 _st) {
 float noise (float _x) {
     float i = floor(_x);  // integer
 	float f = fract(_x);  // fraction
-
-	// float y = random(i); //rand() is described in the previous chapter
-	// y = mix(random(i), random(i + 1.0), f);
 	float y = mix(random(i), random(i + 1.0), smoothstep(0.,1.,f));
 	return y;
+}
+float noise (in vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    // Four corners in 2D of a tile
+    float a = random(i);
+    float b = random(i + vec2(1.0, 0.0));
+    float c = random(i + vec2(0.0, 1.0));
+    float d = random(i + vec2(1.0, 1.0));
+
+    // Smooth Interpolation
+
+    // Cubic Hermine Curve.  Same as SmoothStep()
+    vec2 u = f*f*(3.0-2.0*f);
+    u = smoothstep(0.,1.,f);
+
+    // Mix 4 coorners porcentages
+    return mix(a, b, u.x) + 
+            (c - a)* u.y * (1.0 - u.x) + 
+            (d - b) * u.x * u.y;
 }
 
 float box(vec2 _st, vec2 _size){
@@ -76,18 +94,32 @@ float circle(vec2 st, float radius){
 
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    // st -= .5;
-    // st *= 50.;
+    st *= 2.;
 
-    vec3 color =  hsb2rgb (vec3 (noise (u_time), noise (u_time), 1.));
+    // Scale the coordinate system to see
+    // some noise in action
+    // vec2 pos = vec2(st* (5.0 + (noise (u_time) * 500.)));
+    // vec2 pos = 
+    // st -= vec2 (1.5, -0.5);
+    // st *= scale (5.);
+    // st *= 10.;
+    
+    // float pct = box (st, vec2 (0.3, 0.8));
+    float dist = (u_mouse.x / u_resolution.x) * 0.25;
+    float _noise = noise (st.y);
+    float pct = distance (st - _noise, vec2 (0.5 + (dist)));
+    float pct2 = distance (st + _noise, vec2 (0.5 - (dist)));
+    // float pct2 = dot (st.x, 1.5 + u_mouse.y / u_resolution.y);
+    
+    float adj = (u_mouse.y / u_resolution.y) * 25.;
+    // st += vec2 (0.3, 0.);
+    
 
-    // st *= scale (vec2 (4.,2.));
-    st *= scale (vec2 (5.));
-    st -= vec2 (1.,2.);
-    float adj = noise (st.x);
-    float adj2 = noise (u_time);
-    float pct = circle (st* (adj2/adj), 2.);
-    // pct = 
+    // vec3 col = vec3 (min (pct, pct2));
+    vec3 col = vec3 (step (pow (pct2, pct), 0.95) + (_noise));
 
-    gl_FragColor = vec4 (vec3 (pct), 1.0);
+    // Use the noise function
+    // float n = noise(pos);
+
+    gl_FragColor = vec4(col, 1.0);
 }
