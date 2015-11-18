@@ -135,6 +135,11 @@ vec3 scratchCol1 = vec3 (.5,0.,0.0);
 vec3 scratchCol2 = vec3 (.5,0.5,0.0);
 vec3 scratchCol3 = vec3 (.25,0.95,0.0);
 vec3 scratchCol4 = returnColor (vec3 (112., 229., 255));
+vec3 scratchCol5 = returnColor (vec3 (255., 172., 69.));    //organge
+vec3 scratchCol6 = returnColor (vec3 (93., 191., 82.));    //green
+
+vec3 scratchCol7 = returnColor (vec3 (72., 85., 255.));    //organge
+vec3 scratchCol8 = returnColor (vec3 (255., 76., 76.));    //green
 
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
@@ -145,11 +150,25 @@ void main () {
 
     //box 1
     st.x += .33;
-    float freqAnimation = 65. + (sin (noise (u_time)) * 15.);
-    float box1 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
+    float freqAnimation = 65. + (sin (noise (u_time)) * 55.);
+    // float box1 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
+    vec2 box1Size = vec2 (0.275, 0.75);
+    float box1 = box (
+        st 
+        + vec2 (addBlur (st, 5.5)  //blur
+        + vec2 (-0.1)),     //offset
+        box1Size
+    );
+     float box1_2 = box (
+        st 
+        + vec2 (addBlur (st, 0.5 + freqAnimation)  //blur
+        + vec2 (-0.1)),     //offset
+        box1Size
+    );
+    float box1Mask = box (st, box1Size);
     // col += box1;
-    col = addColorF (col, box1 * vec3 (1.), box1);
-
+    col = addColorF (col, box1 * scratchCol5 * box1Mask, box1);
+    col = addColorF (col, box1_2 * scratchCol6 * box1Mask, box1_2);
     
     //box 2
     st.x -= .33;
@@ -164,8 +183,16 @@ void main () {
     //box 3
     st.x -= .33;
     float freqAnimation3 = 5. + (sin (noise (u_time)) * 15.);
-    float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation3)), vec2 (0.275, 0.75));
-    col = addColorF (col, scratchCol4 * box3, box3);
+    // float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation3)), vec2 (0.275, 0.75));
+
+    vec2 box3_size = vec2 (0.275, 0.75);
+    float box3_mask = box (st, box3_size);
+    float box3_pct1 = addBlur (st, 0.5);
+    float box3_pct2 = addSmudge (st, 0.5, freqAnimation3);
+
+    // float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation3)), vec2 (0.275, 0.75));
+    float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
+    col = addColorF (col, box3 * mix (scratchCol7, scratchCol8, abs (sin (dot (noise (dot (st.y, st.x)), u_time * 15.)))), box3);
     
     float adj = (u_mouse.y / u_resolution.y) * 25.;
     

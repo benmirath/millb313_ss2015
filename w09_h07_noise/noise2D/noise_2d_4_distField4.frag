@@ -99,7 +99,8 @@ void main () {
 
     
     float adj = (u_mouse.y / u_resolution.y) * 25.;
-    vec3 col = vec3 ( (abs (sin (noise (st) * u_time))) + pct2);
+    // vec3 col = vec3 ( (abs (sin (noise (st) * u_time))) + pct2);
+    vec3 col = vec3 ( min(abs (sin (noise (st) * u_time)), pct2));
 
     gl_FragColor = vec4(col, 1.0);
 }

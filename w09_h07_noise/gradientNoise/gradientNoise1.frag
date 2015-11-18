@@ -39,6 +39,11 @@ float random (float _x) {
 float random (in vec2 _st) { 
     return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123);
 }
+vec2 random2(vec2 st){
+    st = vec2( dot(st,vec2(127.1,311.7)),
+              dot(st,vec2(269.5,183.3)) );
+    return -1.0 + 2.0*fract(sin(st)*43758.5453123);
+}
 
 float noise (float _x) {
     float i = floor(_x);  // integer
@@ -66,6 +71,18 @@ float noise (in vec2 st) {
     return mix(a, b, u.x) + 
             (c - a)* u.y * (1.0 - u.x) + 
             (d - b) * u.x * u.y;
+}
+
+float gradientNoise(vec2 st) {
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+
+    vec2 u = f*f*(3.0-2.0*f);
+
+    return mix( mix( dot( random2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ), 
+                     dot( random2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+                mix( dot( random2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ), 
+                     dot( random2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
 }
 
 float box(vec2 _st, vec2 _size){
@@ -104,17 +121,22 @@ float addGyration (vec2 _st, float intensity, float freq, float speed, float ran
 
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
+    st *= noise (st);
+    
     st *= 2.;
-    st -= 1.;
+    st -= vec2 (0.5, 0.5);
 
-    float pct = box (st + vec2 (noise (st * u_time)), vec2 (0.3, 0.75));
+
+    float pct = box (st + vec2 (gradientNoise (st * u_time)), vec2 (0.5, 1.75));
     float freqAnimation = 65. + (sin (noise (u_time)) * 15.);
-    float pct2 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.3, 0.75));
-
-
+    float pct2 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.5, 1.5));
     
     float adj = (u_mouse.y / u_resolution.y) * 25.;
     vec3 col = vec3 ( noise(abs (sin (u_time))) + pct2);
+    // col += smoothstep(.15,.2,noise(st*10.)); // Black splatter
+    col -= smoothstep(.35,.4,noise(st*10.)); // Holes on splatter
+
+    // col *= gradientNoise (st);
 
     gl_FragColor = vec4(col, 1.0);
 }
