@@ -105,11 +105,11 @@ float addGyration (vec2 _st, float intensity, float freq, float speed, float ran
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
     st *= 2.;
-    st -= 1.;
+    st -= vec2 (0.5, 0.5);
 
-    float pct = box (st + vec2 (noise (st * u_time)), vec2 (0.3, 0.75));
+    float pct = box (st + vec2 (noise (st * u_time)), vec2 (0.5, 1.75));
     // float pct2 = box (st + vec2 (addBlur (st, 0.3)), vec2 (0.3, 0.75));
-    float pct2 = box (st + vec2 (addStroke (st, 0.5, 65. + (sin (noise (u_time)) * 15.))), vec2 (0.3, 0.75));
+    float pct2 = box (st + vec2 (addStroke (st, 0.5, 65. + (sin (noise (u_time)) * 15.))), vec2 (1.3, 1.75));
     // float pct2 = box (st + vec2 (addGyration (st, 0.5, 4., 3., 5.)), vec2 (0.3, 0.75));
 
 
