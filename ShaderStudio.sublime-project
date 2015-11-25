@@ -3,6 +3,12 @@
 	[
 		{
 			"path": "/Users/benmiller/Projects/millb313_ss2015"
+		},
+		{
+			"path": "/Users/benmiller/Downloads/builtin_shaders-5.2.3f1/DefaultResources"
+		},
+		{
+			"path": "/Users/benmiller/Downloads/builtin_shaders-5.2.3f1/DefaultResourcesExtra"
 		}
 	]
 }

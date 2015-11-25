@@ -124,7 +124,7 @@ vec3 addColorF (vec3 curColor, vec3  newColor, float intensity) {
 //     return col;
 // }
 
-void addColor (out vec3 curColor, vec3  newColor, float intensity) {
+void addColor (inout vec3 curColor, vec3  newColor, float intensity) {
     vec3 col = curColor;
     col *= step (intensity, 0.0);
     col += newColor * (1. - step (intensity, 0.));
@@ -150,7 +150,7 @@ void main () {
 
     //box 1
     st.x += .33;
-    float freqAnimation = 65. + (sin (noise (u_time)) * 55.);
+    float freqAnimation = 65. + (noise (u_time) * 55.);
     // float box1 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
     vec2 box1Size = vec2 (0.275, 0.75);
     float box1 = box (
@@ -192,7 +192,9 @@ void main () {
 
     // float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation3)), vec2 (0.275, 0.75));
     float box3 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.275, 0.75));
-    col = addColorF (col, box3 * mix (scratchCol7, scratchCol8, abs (sin (dot (noise (dot (st.y, st.x)), u_time * 15.)))), box3);
+    // col = addColorF (col, box3 * mix (scratchCol7, scratchCol8, abs (sin (dot (noise (dot (st.y, st.x)), u_time * 15.)))), box3);
+    // addColor (col, box3 * mix (scratchCol7, scratchCol8, abs (sin (dot (noise (dot (st.y, st.x)), u_time * 15.)))), box3);
+    addColor (col, box3 * mix (scratchCol7, scratchCol8, dot (noise (dot (st.y, st.x)), u_time * 15.)), box3);
     
     float adj = (u_mouse.y / u_resolution.y) * 25.;
     

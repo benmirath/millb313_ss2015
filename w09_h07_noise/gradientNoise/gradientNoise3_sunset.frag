@@ -103,6 +103,15 @@ float circle(vec2 st, float radius){
     return 1.-smoothstep(radius-(radius*0.05),radius+(radius*0.05),dot(pos,pos)*3.14);
 }
 
+float circleDeformed(vec2 st, float radius){
+    vec2 pos = vec2(0.5)-st;
+    float adjust = smoothstep (0.5, 0.1, st.y);
+    st.x *= (0.5* adjust);
+    radius *= (0.75 + (noise (st * (u_time + 50.))) * adjust);
+    // radius *= (0.75 + (noise (st.y * (u_time + 50.))) * adjust);  //interesting symmetrical version
+    return 1.-smoothstep(radius-(radius*0.05),radius+(radius*0.05),dot(pos,pos)*3.14);
+}
+
 float addBlur (vec2 _st, float intensity) {
     return noise (random (_st) * intensity);
 }
@@ -117,34 +126,33 @@ float addGyration (vec2 _st, float intensity, float freq, float speed, float ran
     return noise (sin (noise (u_time * speed) * range * dot (_st.x, _st.y)) * freq) * noise (random (_st) * intensity);
 }
 
+void addColor (inout vec3 curColor, vec3  newColor, float intensity) {
+    vec3 col = curColor;
+    col *= step (intensity, 0.0);
+    col += newColor * (1. - step (intensity, 0.));
+    curColor = col;
+}
+vec3 addColorF (vec3 curColor, vec3  newColor, float intensity) {
+    vec3 col = curColor;
+    col *= step (intensity, 0.0);
+    col += newColor * (1. - step (intensity, 0.));
+    return col;
+}
+
+vec3 col1 = vec3 (1., 0., 0.);
+vec3 col2 = vec3 (0.0, 0.5, 5.);
 void main () {
     vec2 st = gl_FragCoord.xy/u_resolution.xy;
-    // st *= noise (st);
+    float pct = circleDeformed (st, 0.5);
     
-    // st *= 2.;
-    // st -= vec2 (0.5, 0.5);
     vec3 col = vec3 (0.);
+    st.y += 0.375;
+    vec3 colAdjust1 = mix (vec3 (0., 0., 0.5), vec3 (0., 0.5, 0.75), noise (st * u_time * 0.5) * 0.4);
+    col = addColorF (col,  colAdjust1, box (st, vec2 (1., 0.7)));
+    st.y -= 0.375;
 
-    float pct = 0.;
-
-    pct = circle (st, 0.5 + gradientNoise (st * u_time));
-    // pct = gradientNoise (st * u_time);
-
-
-
-    col = vec3 (pct);
-
-
-    // float pct = box (st + vec2 (gradientNoise (st * u_time)), vec2 (0.5, 1.75));
-    // float freqAnimation = 65. + (sin (noise (u_time)) * 15.);
-    // float pct2 = box (st + vec2 (addStroke (st, 0.5, freqAnimation)), vec2 (0.5, 1.5));
-    
-    // float adj = (u_mouse.y / u_resolution.y) * 25.;
-    // vec3 col = vec3 ( noise(abs (sin (u_time))) + pct2);
-    // // col += smoothstep(.15,.2,noise(st*10.)); // Black splatter
-    // col -= smoothstep(.35,.4,noise(st*10.)); // Holes on splatter
-
-    // col *= gradientNoise (st);
+    vec3 colAdjust2 = mix (col1, col2, (distance (st, vec2 (0.5)) * 0.4));
+    col = addColorF (col, colAdjust2, pct);
 
     gl_FragColor = vec4(col, 1.0);
 }
